@@ -1,0 +1,26 @@
+{
+    "name": "pixxo/restfullapi",
+    "description": "A php 7+ library for generating RestFull api.",
+    "type": "library",
+    "authors": [
+        {
+            "name": "Behnam Shateri",
+            "email": "BehnamShateri@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "Pixxo\\RestFullApi\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Pixxo\\RestFullApi\\RestFullApiServiceProvider"
+            ]
+        }
+    }
+
+}
