@@ -10,7 +10,10 @@
         }
     ],
     "minimum-stability": "dev",
-    "require": {},
+    "require": {
+        "php": ">=7.0",
+        "laravel/framework": ">=6.*"
+    },
     "autoload": {
         "psr-4": {
             "Pixxo\\RestFullApi\\": "src/"
