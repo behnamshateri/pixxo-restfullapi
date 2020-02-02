@@ -1,6 +1,6 @@
 {
     "name": "pixxo/restfullapi",
-    "description": "A php 7+ library for generating RestFull api.",
+    "description": "A library for response in RestFull api.",
     "license": "MIT",
     "type": "library",
     "authors": [

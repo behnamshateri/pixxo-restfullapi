@@ -1,5 +1,5 @@
 # pixxo-restfullapi
-A Php 7+ library for generating RestFull api.
+A library for response in RestFull api.
 
 
 ## License ##
