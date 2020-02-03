@@ -7,6 +7,7 @@ use Illuminate\Http\Response;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Validator;
+use function foo\func;
 
 trait ApiResponser{
     /**
@@ -47,7 +48,12 @@ trait ApiResponser{
         // sort collection
         $collection = $this->filterData($collection);
         $collection = $this->sortData($collection);
-        $collection = $this->paginateData($collection);
+
+        if(request()->has("paginate")){
+            if(request()->paginate == "1" || strtolower(request()->paginate) == "true"){
+                $collection = $this->paginateData($collection);
+            }
+        }
 
         return $this->successResponse($collection);
     }
@@ -59,7 +65,7 @@ trait ApiResponser{
     private function sortData(Collection $collection) : Collection{
         if(request()->has("sort_by")){
             $attribute = request()->sort_by;
-            $collection = $collection->sortBy->{$attribute};
+            $collection = $collection->sortBy($attribute);
         }
         return $collection;
     }
@@ -70,13 +76,14 @@ trait ApiResponser{
      */
     private function filterData(Collection $collection) : Collection{
         foreach (request()->query() as $query => $value){
-            $collection = $collection->where($query, $value);
+            if(isset($collection[0]->$query)){
+                $collection = $collection->where($query, $value);
+            }
         }
-
         return $collection;
     }
 
-    private function paginateData(Collection $collection) : Collection{
+    private function paginateData(Collection $collection){
         $rules = [
             "per_page" => "integer|min:2|max:50",
         ];
