@@ -1,5 +1,5 @@
 # pixxo-restfullapi
-A library for response in RestFull api.
+A library for response any RestFull api.
 
 
 ## License ##
